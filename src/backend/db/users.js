@@ -20,8 +20,40 @@ export const users = [
     bio:"neograd 2023, software Developer",
     userTheme:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687456655/backgrondTheme.avif",
     dateOfBirth:"13 April 2021",
-    followers:[],
-    following:[],
+    followers:[
+      {_id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
+        firstName: "Sandeep",
+        lastName: "Jula",
+        userHandler:"sandeepsandy",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp"
+      },
+      {_id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+        firstName: "Yoongi",
+        lastName: "min",
+        userHandler:"suga",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+      }
+    ],
+    following:[
+    {_id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+      firstName: "Yoongi",
+      lastName: "min",
+      userHandler:"suga",
+      userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+      },
+    { _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
+      firstName: "Sandeep",
+      lastName: "Jula",
+      userHandler:"sandeepsandy",
+      userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp"
+    }, {
+      _id: "0b73d84b-0605-4c9c-9d99-243252299056",
+      firstName: "Elon",
+      lastName: "Musk",
+      userHandler:"Elon",
+      userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg"
+    }
+  ],
     bookmarks:[],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -38,8 +70,29 @@ export const users = [
     bio:"Senior Testor, cricket lover",
     userTheme:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687456655/backgrondTheme.avif",
     dateOfBirth:"21 June 1995",
-    followers:[],
-    following:[],
+    followers:[
+      {
+        _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+        firstName: "Sangeetha",
+        lastName: "Jula",
+        userHandler:"sangeethajula",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+      }
+    ],
+    following:[{
+      _id: "0b73d84b-0605-4c9c-9d99-243252299056",
+      firstName: "Elon",
+      lastName: "Musk",
+      userHandler:"Elon",
+      userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg"
+    },
+    {
+      _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+      firstName: "Sangeetha",
+      lastName: "Jula",
+      userHandler:"sangeethajula",
+      userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+    }],
     bookmarks:[],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -74,8 +127,24 @@ export const users = [
     bio:"rapper, suga of BTS ,Loves Army 💜 and Music 💓",
     userTheme:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687456655/backgrondTheme.avif",
     dateOfBirth:"08 march 1993",
-    followers:[],
-    following:[],
+    followers:[
+      {
+        _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+        firstName: "Sangeetha",
+        lastName: "Jula",
+        userHandler:"sangeethajula",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+      }
+    ],
+    following:[
+      {
+        _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+        firstName: "Sangeetha",
+        lastName: "Jula",
+        userHandler:"sangeethajula",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+      }
+    ],
     bookmarks:[],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -110,8 +179,22 @@ export const users = [
     bio:"IT industry, Food Lover, Love My country",
     userTheme:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687456655/backgrondTheme.avif",
     dateOfBirth:"15 Dec 1999",
-    followers:[],
-    following:[],
+    followers:[
+      {_id: "84380cb5-0627-4df2-a2a2-49f4644497ff",
+        firstName: "Navya",
+        lastName: "Dwivedi",
+        userHandler:"Sweety",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687459883/defaultprofile.png"
+      }
+    ],
+    following:[
+      {
+        _id: "0b73d84b-0605-4c9c-9d99-243252299056",
+        firstName: "Elon",
+        lastName: "Musk",
+        userHandler:"Elon",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg"
+      }],
     bookmarks:[],
     createdAt: formatDate(),
     updatedAt: formatDate(),
@@ -128,7 +211,29 @@ export const users = [
     bio:"CEO of twitter, co-founded and leads Tesla 🚙, SpaceX 🚀, Neuralink 🧠 and The Boring Company.",
     userTheme:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458317/spacextheme.jpg",
     dateOfBirth:"28 June 1971",
-    followers:[],
+    followers:[
+      {
+        _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
+        firstName: "Sandeep",
+        lastName: "Jula",
+        userHandler:"sandeepsandy",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
+      },
+      {
+        _id: "c53f18ce-6760-4d61-8032-8c0e5926ab2e",
+        firstName: "sravani",
+        lastName: "Bhupati",
+        userHandler:"sravs",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687094072/cld-sample.jpg",
+      },
+      {
+        _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+        firstName: "Sangeetha",
+        lastName: "Jula",
+        userHandler:"sangeethajula",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+      }
+    ],
     following:[],
     bookmarks:[],
     createdAt: formatDate(),
@@ -147,7 +252,15 @@ export const users = [
     userTheme:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687456655/backgrondTheme.avif",
     dateOfBirth:" 08 November 2003",
     followers:[],
-    following:[],
+    following:[
+      {
+        _id: "c53f18ce-6760-4d61-8032-8c0e5926ab2e",
+        firstName: "sravani",
+        lastName: "Bhupati",
+        userHandler:"sravs",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687094072/cld-sample.jpg",
+    },
+    ],
     bookmarks:[],
     createdAt: formatDate(),
     updatedAt: formatDate(),
