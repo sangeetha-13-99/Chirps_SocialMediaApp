@@ -25,12 +25,14 @@ export const users = [
         firstName: "Sandeep",
         lastName: "Jula",
         userHandler:"sandeepsandy",
+        username: "sandyJula@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp"
       },
       {_id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
         firstName: "Yoongi",
         lastName: "min",
         userHandler:"suga",
+        username: "AgustDTBTS@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
       }
     ],
@@ -39,18 +41,21 @@ export const users = [
       firstName: "Yoongi",
       lastName: "min",
       userHandler:"suga",
+      username: "AgustDTBTS@gmail.com",
       userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
       },
     { _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
       firstName: "Sandeep",
       lastName: "Jula",
       userHandler:"sandeepsandy",
+      username: "sandyJula@gmail.com",
       userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp"
     }, {
       _id: "0b73d84b-0605-4c9c-9d99-243252299056",
       firstName: "Elon",
       lastName: "Musk",
       userHandler:"Elon",
+      username: "TelonMusk@gmail.com",
       userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg"
     }
   ],
@@ -75,6 +80,7 @@ export const users = [
         _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
         firstName: "Sangeetha",
         lastName: "Jula",
+        username: "sangeetha@gmail.com",
         userHandler:"sangeethajula",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
       }
@@ -84,6 +90,7 @@ export const users = [
       firstName: "Elon",
       lastName: "Musk",
       userHandler:"Elon",
+      username: "TelonMusk@gmail.com",
       userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg"
     },
     {
@@ -91,6 +98,7 @@ export const users = [
       firstName: "Sangeetha",
       lastName: "Jula",
       userHandler:"sangeethajula",
+      username: "sangeetha@gmail.com",
       userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
     }],
     bookmarks:[],
@@ -133,6 +141,7 @@ export const users = [
         firstName: "Sangeetha",
         lastName: "Jula",
         userHandler:"sangeethajula",
+        username: "sangeetha@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
       }
     ],
@@ -142,6 +151,7 @@ export const users = [
         firstName: "Sangeetha",
         lastName: "Jula",
         userHandler:"sangeethajula",
+        username: "sangeetha@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
       }
     ],
@@ -184,6 +194,7 @@ export const users = [
         firstName: "Navya",
         lastName: "Dwivedi",
         userHandler:"Sweety",
+        username: "navyaD@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687459883/defaultprofile.png"
       }
     ],
@@ -193,6 +204,7 @@ export const users = [
         firstName: "Elon",
         lastName: "Musk",
         userHandler:"Elon",
+        username: "TelonMusk@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg"
       }],
     bookmarks:[],
@@ -217,6 +229,7 @@ export const users = [
         firstName: "Sandeep",
         lastName: "Jula",
         userHandler:"sandeepsandy",
+        username: "sandyJula@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
       },
       {
@@ -224,6 +237,7 @@ export const users = [
         firstName: "sravani",
         lastName: "Bhupati",
         userHandler:"sravs",
+        username: "sravaniBhupati@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687094072/cld-sample.jpg",
       },
       {
@@ -231,6 +245,7 @@ export const users = [
         firstName: "Sangeetha",
         lastName: "Jula",
         userHandler:"sangeethajula",
+        username: "sangeetha@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
       }
     ],
@@ -258,6 +273,7 @@ export const users = [
         firstName: "sravani",
         lastName: "Bhupati",
         userHandler:"sravs",
+        username: "sravaniBhupati@gmail.com",
         userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687094072/cld-sample.jpg",
     },
     ],

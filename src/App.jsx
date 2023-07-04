@@ -1,18 +1,19 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { ChakraProvider } from '@chakra-ui/react'
-import "./App.css";
-import { AuthService } from "./services/AuthService";
-import { HomePage } from "./pages/HomePage";
-import { RootPage } from "./pages/RootPage";
-import { ExplorePage } from "./pages/ExplorePage";
-import { BookMarks } from "./pages/BookMarks";
-import { PostPage } from "./pages/PostPage";
-import { Profile } from "./pages/Profile";
-import { Login } from "./pages/Login";
-import { SignUp } from "./pages/SignUp";
 import { Fragment } from "react";
-import { Auth } from "./pages/Auth";
-
+import { ToastContainer } from "react-toastify";
+import Mockman from "mockman-js"
+import { AuthService } from "./services/AuthService";
+import { HomePage } from "./pages/Home/HomePage";
+import { RootPage } from "./pages/Root/RootPage";
+import { ExplorePage } from "./pages/Explore/ExplorePage";
+import { PostPage } from "./pages/PostPage";
+import { Profile } from "./pages/Profile/Profile";
+import { Login } from "./pages/Auth/components/Login";
+import { SignUp } from "./pages/Auth/components/SignUp";
+import { Auth } from "./pages/Auth/Auth";
+import "./App.css";
+import { LikedPage } from "./pages/Liked/LikedPage";
+import { BookMarksPage } from "./pages/BookMarks/BookMarksPage";
 
 
 if (import.meta.env.DEV) {
@@ -29,23 +30,34 @@ if (import.meta.env.DEV) {
 function App() {
 
 	const router=createBrowserRouter([
+		// auth authserviceto root
 		{path:'/',element:<AuthService><RootPage/></AuthService>,children:[
-			{path:"/home",element:<AuthService><HomePage/></AuthService>},
+			{path:"/",element:<AuthService><HomePage/></AuthService>},
 			{path:"/explore",element:<AuthService><ExplorePage/></AuthService>},
-			{path:"/bookmarks",element:<AuthService><BookMarks/></AuthService>},
+			{path:"/bookmark",element:<AuthService><BookMarksPage/></AuthService>},
+			{path:"/liked",element:<AuthService><LikedPage/></AuthService>},
 			{path:"/post/:postId",element:<AuthService><PostPage/></AuthService>},
 			{path:"/profile/:profileId",element:<AuthService><Profile/></AuthService>},
 		]},
 		{path:'/auth',element:<Auth/>,children:[
 			{path:"login",element:<Login/>},
 			{path:"signup",element:<SignUp/>}
-		]}
+		]},
+		{path:'/mockman',element:<Mockman/>}
 	])
 	return (
 		<Fragment>
-			<ChakraProvider>
-				<RouterProvider router={router}/>
-			</ChakraProvider>
+			<ToastContainer
+            icon={false}
+            position="top-right"
+            autoClose={500}
+            newestOnTop={true}
+            limit={2}
+            closeOnClick
+            draggable
+            theme="dark"
+          />
+			<RouterProvider router={router}/>
 		</Fragment>
 	);
 }

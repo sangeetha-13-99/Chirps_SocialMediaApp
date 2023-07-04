@@ -38,6 +38,7 @@ export const posts = [
     },
     comments:[
         {
+          
           _id: "84380cb5-0627-4df2-a2a2-49f4644497ff",
           firstName: "Navya",
           lastName: "Dwivedi",
@@ -51,8 +52,8 @@ export const posts = [
         }
     ],
     username: "sangeetha@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-03-02T12:59:08+05:30",
+    updatedAt: "2023-05-02T12:59:08+05:30",
   },
   {
     _id: "e9af9551-9ada-48d0-90c5-a4663c72c76b",
@@ -86,32 +87,32 @@ export const posts = [
           userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
         }
       ],
-      comments:[
-        {
-          _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
-          firstName: "Sandeep",
-          lastName: "Jula",
-          userHandler:"sandeepsandy",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
-          content:"What a Great Tour and I Wish more like this.",
-          votes: {
-            upvotedBy: [
-              {
-                _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
-                firstName: "Yoongi",
-                lastName: "min",
-                userHandler:"suga",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
-              },
-            ],
-            downvotedBy: [],
-          },
-        },
-      ]
     },
+    comments:[
+      {
+        _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
+        firstName: "Sandeep",
+        lastName: "Jula",
+        userHandler:"sandeepsandy",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
+        content:"What a Great Tour and I Wish more like this.",
+        votes: {
+          upvotedBy: [
+            {
+              _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+              firstName: "Yoongi",
+              lastName: "min",
+              userHandler:"suga",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+            },
+          ],
+          downvotedBy: [],
+        },
+      },
+    ],
     username: "AgustDTBTS@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-03-01T12:59:08+05:30",
+    updatedAt: "2023-05-01T12:59:08+05:30",
   },
   {
     _id: "bb3da66f-6bc7-4029-9ead-94ffbc887811",
@@ -130,39 +131,39 @@ export const posts = [
         }
       ],
       dislikedBy: [],
-      comments:[
-        {
-          _id: "f1e8067b-27ba-42ea-9ce2-d4879e530438",
-          firstName: "simons",
-          lastName: "Cat",
-          userHandler:"simonscat",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
-          content:"Wow, Momo's,noodles,... Iam Craving Now",
-          votes: {
-            upvotedBy: [
-              {
-                _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
-                firstName: "Sangeetha",
-                lastName: "Jula",
-                userHandler:"sangeethajula",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
-              },
-              {
-                _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
-                firstName: "Yoongi",
-                lastName: "min",
-                userHandler:"suga",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
-              },
-            ],
-            downvotedBy: [],
-          },
-        },
-      ]
     },
+    comments:[
+      {
+        _id: "f1e8067b-27ba-42ea-9ce2-d4879e530438",
+        firstName: "simons",
+        lastName: "Cat",
+        userHandler:"simonscat",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+        content:"Wow, Momo's,noodles,... Iam Craving Now",
+        votes: {
+          upvotedBy: [
+            {
+              _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+              firstName: "Sangeetha",
+              lastName: "Jula",
+              userHandler:"sangeethajula",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
+            },
+            {
+              _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+              firstName: "Yoongi",
+              lastName: "min",
+              userHandler:"suga",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+            },
+          ],
+          downvotedBy: [],
+        },
+      },
+    ],
     username: "sangeetha@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-03-12T12:59:08+05:30",
+    updatedAt: "2023-05-24T12:59:08+05:30",
   },
   {
     _id: "95ae9a9f-6924-4d31-80c7-9e96eefdf2ff",
@@ -188,59 +189,59 @@ export const posts = [
         },
       ],
       dislikedBy: [],
-      comments:[
-        {
-          _id: "f1e8067b-27ba-42ea-9ce2-d4879e530438",
-          firstName: "simons",
-          lastName: "Cat",
-          userHandler:"simonscat",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
-          content:"I love my cat poses🐈",
-          votes: {
-            upvotedBy: [
-              {
-                _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
-                firstName: "Sangeetha",
-                lastName: "Jula",
-                userHandler:"sangeethajula",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
-              },
-              {
-                _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
-                firstName: "Yoongi",
-                lastName: "min",
-                userHandler:"suga",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
-              },
-            ],
-            downvotedBy: [],
-          },
-        },
-        {
-          _id: "84380cb5-0627-4df2-a2a2-49f4644497ff",
-          firstName: "Navya",
-          lastName: "Dwivedi",
-          userHandler:"Sweety",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687459883/defaultprofile.png",
-          content:'haha 😺',
-          votes: {
-            upvotedBy: [
-              {
-                _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
-                firstName: "Sangeetha",
-                lastName: "Jula",
-                userHandler:"sangeethajula",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
-              },
-            ],
-            downvotedBy: [],
-          },
-        }
-      ]
     },
+    comments:[
+      {
+        _id: "f1e8067b-27ba-42ea-9ce2-d4879e530438",
+        firstName: "simons",
+        lastName: "Cat",
+        userHandler:"simonscat",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+        content:"I love my cat poses🐈",
+        votes: {
+          upvotedBy: [
+            {
+              _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+              firstName: "Sangeetha",
+              lastName: "Jula",
+              userHandler:"sangeethajula",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
+            },
+            {
+              _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+              firstName: "Yoongi",
+              lastName: "min",
+              userHandler:"suga",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+            },
+          ],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: "84380cb5-0627-4df2-a2a2-49f4644497ff",
+        firstName: "Navya",
+        lastName: "Dwivedi",
+        userHandler:"Sweety",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687459883/defaultprofile.png",
+        content:'haha 😺',
+        votes: {
+          upvotedBy: [
+            {
+              _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+              firstName: "Sangeetha",
+              lastName: "Jula",
+              userHandler:"sangeethajula",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
+            },
+          ],
+          downvotedBy: [],
+        },
+      }
+    ],
     username: "simon@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-06-12T12:59:08+05:30",
+    updatedAt: "2023-06-24T12:59:08+05:30",
   },
   {
     _id: "6146dbe0-00c4-4e33-a278-36d94d94bf18",
@@ -280,59 +281,59 @@ export const posts = [
         }
       ],
       dislikedBy: [],
-      comments:[
-        {
-          _id: "0b73d84b-0605-4c9c-9d99-243252299056",
-          firstName: "Elon",
-          lastName: "Musk",
-          userHandler:"Elon",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg",
-          content:"Im loving this",
-          votes: {
-            upvotedBy: [
-              {
-                _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
-                firstName: "Sangeetha",
-                lastName: "Jula",
-                userHandler:"sangeethajula",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
-              },
-              {
-                _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
-                firstName: "Yoongi",
-                lastName: "min",
-                userHandler:"suga",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
-              },
-            ],
-            downvotedBy: [],
-          },
-        },
-        {
-          _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
-          firstName: "Sangeetha",
-          lastName: "Jula",
-          userHandler:"sangeethajula",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
-          content:'🚀🚀',
-          votes: {
-            upvotedBy: [
-              {
-                _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
-                firstName: "Sangeetha",
-                lastName: "Jula",
-                userHandler:"sangeethajula",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
-              },
-            ],
-            downvotedBy: [],
-          },
-        }
-      ]
     },
+    comments:[
+      {
+        _id: "0b73d84b-0605-4c9c-9d99-243252299056",
+        firstName: "Elon",
+        lastName: "Musk",
+        userHandler:"Elon",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687458120/elonmusk.jpg",
+        content:"Im loving this",
+        votes: {
+          upvotedBy: [
+            {
+              _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+              firstName: "Sangeetha",
+              lastName: "Jula",
+              userHandler:"sangeethajula",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
+            },
+            {
+              _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+              firstName: "Yoongi",
+              lastName: "min",
+              userHandler:"suga",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+            },
+          ],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+        firstName: "Sangeetha",
+        lastName: "Jula",
+        userHandler:"sangeethajula",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+        content:'🚀🚀',
+        votes: {
+          upvotedBy: [
+            {
+              _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+              firstName: "Sangeetha",
+              lastName: "Jula",
+              userHandler:"sangeethajula",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg"
+            },
+          ],
+          downvotedBy: [],
+        },
+      }
+    ],
     username: "TelonMusk@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-06-11T12:59:08+05:30",
+    updatedAt: "2023-07-01T12:59:08+05:30",
   },
   {
     _id: "88af4a75-7705-4396-a387-b7cd021a3589",
@@ -393,8 +394,8 @@ export const posts = [
         }
     ],
     username: "AriaHolmes@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-06-11T12:59:08+05:30",
+    updatedAt: "2023-07-02T12:59:08+05:30",
   },
   {
     _id: "63d26963-4738-4bab-ac92-dfd18e5f3ef8",
@@ -430,8 +431,8 @@ export const posts = [
     },
     comments:[],
     username: "sangeetha@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-05-11T12:59:08+05:30",
+    updatedAt: "2023-06-02T12:59:08+05:30",
   },
   {
     _id: "3bfcd591-82fa-40bf-9691-de15319091fc",
@@ -465,32 +466,32 @@ export const posts = [
       ],
       dislikedBy: [
       ],
-      comments:[
-        {
-          _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
-          firstName: "Sangeetha",
-          lastName: "Jula",
-          userHandler:"sangeethajula",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
-          content:"oh, i truly wanted this now😣",
-          votes: {
-            upvotedBy: [
-              {
-                _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
-                firstName: "Yoongi",
-                lastName: "min",
-                userHandler:"suga",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
-              }
-            ],
-            downvotedBy: [],
-          },
-        },
-      ]
     },
+    comments:[
+      {
+        _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",
+        firstName: "Sangeetha",
+        lastName: "Jula",
+        userHandler:"sangeethajula",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687212774/social-media/avatarteddy.jpg",
+        content:"oh, i truly wanted this now😣",
+        votes: {
+          upvotedBy: [
+            {
+              _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+              firstName: "Yoongi",
+              lastName: "min",
+              userHandler:"suga",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+            }
+          ],
+          downvotedBy: [],
+        },
+      },
+    ],
     username: "AgustDTBTS@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-07-01T08:59:08+05:30",
+    updatedAt: "2023-07-02T08:59:08+05:30",
   },
   {
     _id: "85b0d8b8-8b5d-4e6b-a59b-bb0d925dd63b",
@@ -525,44 +526,44 @@ export const posts = [
       ],
       dislikedBy: [
       ],
-      comments:[
-        {
-          _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
-          firstName: "Sandeep",
-          lastName: "Jula",
-          userHandler:"sandeepsandy",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
-          content:"adorable🫠",
-          votes: {
-            upvotedBy: [
-              {
-                _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
-                firstName: "Yoongi",
-                lastName: "min",
-                userHandler:"suga",
-                userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
-              }
-            ],
-            downvotedBy: [],
-          },
-        },
-        {
-          _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
-          firstName: "Sandeep",
-          lastName: "Jula",
-          userHandler:"sandeepsandy",
-          userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
-          content:"so cute",
-          votes: {
-            upvotedBy: [],
-            downvotedBy: [],
-          },
-        },
-      ]
     },
+    comments:[
+      {
+        _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
+        firstName: "Sandeep",
+        lastName: "Jula",
+        userHandler:"sandeepsandy",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
+        content:"adorable🫠",
+        votes: {
+          upvotedBy: [
+            {
+              _id: "e649c2e1-40a4-40e6-bb58-66e7264fc411",
+              firstName: "Yoongi",
+              lastName: "min",
+              userHandler:"suga",
+              userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687168370/docs/minyoongi.webp"
+            }
+          ],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: "736c42b4-8fb6-406e-be84-be1e33b000ea",
+        firstName: "Sandeep",
+        lastName: "Jula",
+        userHandler:"sandeepsandy",
+        userImage:"https://res.cloudinary.com/chirpssocialmediaapp/image/upload/v1687211121/docs/leonardo.webp",
+        content:"so cute",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
     username: "sangeetha@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-07-01T10:59:08+05:30",
+    updatedAt: "2023-07-02T10:59:08+05:30",
   },
   {
     _id: "e4fb7a42-c143-4670-8799-1f7e3a0eb8d3",
@@ -597,7 +598,7 @@ export const posts = [
       },
     ],
     username: "sangeetha@gmail.com",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    createdAt: "2023-07-01T11:59:08+05:30",
+    updatedAt: "2023-07-02T11:59:08+05:30",
   },
 ];
