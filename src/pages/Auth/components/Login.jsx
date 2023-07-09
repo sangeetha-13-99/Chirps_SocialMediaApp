@@ -44,10 +44,9 @@ export const Login = () => {
           setToken(encodedToken);
           const {_id,firstName,lastName,username,userHandler,userImage,createdAt}=foundUser;
           dispatch(authActions.LoggedIn({_id,firstName,lastName,username,userHandler,userImage,createdAt}));
-          dispatch(setAllPostsData());
-          dispatch(setAllUsersActivityPosts());
-          // ✨ usersdata is public actually need to improve the app later
           dispatch(setAllUsersData());
+          // dispatch(setAllPostsData());
+          // ✨ usersdata is public  need to improve the app later
           toast.success('loggedIn Successful');
           return navigate(state!==null?state:"/");
         }

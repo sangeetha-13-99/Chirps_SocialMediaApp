@@ -98,7 +98,6 @@ const setAllPostsData=()=>{
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await getAllPostsPostService();  
-            console.log(posts)
             dispatch(postSliceActions.setAllPosts({posts}));
         }
         catch(error){

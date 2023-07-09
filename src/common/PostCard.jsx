@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, CardBody, CardFooter, CardHeader, HStack, Text, VStack,Image, useColorModeValue, Popover, PopoverTrigger, PopoverContent, PopoverCloseButton, PopoverBody } from "@chakra-ui/react"
+import { Avatar, Box, Card, CardBody, CardFooter, CardHeader, HStack, Text, VStack,Image, useColorModeValue, Popover, PopoverTrigger, PopoverContent, PopoverCloseButton, PopoverBody, AspectRatio } from "@chakra-ui/react"
 import { useDispatch, useSelector } from "react-redux"
 import { ActiveBookMark, ActiveHeart, BookMark,Comment, Delete, Edit, Expand, Heart, Share } from "../utils/icons";
 import { Link as ReachLink} from "react-router-dom";
@@ -11,6 +11,8 @@ export const PostCard = ({post}) => {
   const dispatch=useDispatch();
   const {user}=useSelector(state=>state.auth)
   const {Allusers}=useSelector(state=>state.user);
+
+  console.log(user,"user on post",Allusers)
   const currentUser=Allusers.find((cUser)=>cUser._id===user._id);
   const getPostUser=Allusers.find(user=>user.username===post.username);
   const gray=useColorModeValue('WhiteAlpha 900','gray.700');
@@ -19,10 +21,10 @@ export const PostCard = ({post}) => {
   let renderPostMedia=""
   if(post.mediaUrl){
     if(['png','svg','jpg','jpeg','gif','webp','avif'].includes(post.mediaUrl.split(".").pop().toLowerCase())){
-      renderPostMedia=<Image  h="250px" src={post.mediaUrl} alt={post.content} />
+      renderPostMedia=<Image  objectFit="cover" maxW="100%" h="100%"  borderRadius="10px" src={post.mediaUrl} alt={post.content} />
     }
     else if(['mp3','mp4','webm','ogg'].includes(post.mediaUrl.split(".").pop().toLowerCase())){
-      renderPostMedia=(<video controls h="250px">
+      renderPostMedia=(<video controls style={{height:"100%",width:"100%",objectFit:"cover",borderRadius:"10px"}}>
       <source src={post.mediaUrl} />
       </video>)
     }
@@ -34,7 +36,7 @@ export const PostCard = ({post}) => {
   console.log(isBookMarked,isLiked,post.likes.likedBy)
  
   return (
-    <Card boxShadow="md" my="2"  w="100%" borderRadius="none" bg={gray} border="1px solid" borderColor={borderGray} pos="relative">
+    <Card boxShadow="md" my="2"  w="100%" borderRadius="10px" bg={gray} border="1px solid" borderColor={borderGray} pos="relative">
       <VStack  w="100%">
             <CardHeader alignSelf="start" w="100%">
                 <HStack w="100%" justifyContent="space-between">
@@ -84,11 +86,11 @@ export const PostCard = ({post}) => {
                     </Box>
                 </HStack>
             </CardHeader>
-            <CardBody pt="0" pl="16" alignSelf="flex-start" >
+            <CardBody pt="0" pl="16" alignSelf="flex-start" w="100%" >
               <Box>
                 {post.content}
               </Box>
-              <Box pt="2">
+              <Box pt="2" height={renderPostMedia && "300px"} w="100%">
                 {renderPostMedia}
               </Box>
             </CardBody>

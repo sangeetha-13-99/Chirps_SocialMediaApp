@@ -10,13 +10,11 @@ export const SideBar = () => {
 
     const unfollowedUsers=Allusers.filter((cUser)=>{
         const {followers}=cUser;
-        console.log(followers,"foll",cUser)
-        if(cUser._id !==user._id && followers.some((fUser)=>fUser._id!==user._id)){
+        if(cUser._id !==user._id && (!followers.some((fUser)=>fUser._id===user._id)||followers.length===0)){
             return true
         }
         return false;
     });
-    
   return (
     <Card textAlign="center" p="4" w="80%" borderRadius="none" display={{lg:"block",base:"none"}} margin="0 auto" bg={gray}>
         {

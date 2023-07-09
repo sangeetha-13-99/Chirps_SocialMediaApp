@@ -20,7 +20,8 @@ const styles = {
       alignItems:"center",
       gap:"4",
       py:"4",
-      w:"100%"
+      w:"100%",
+      cursor:"pointer"
     },
     ".icon":{
       color:"red.400",
@@ -34,7 +35,7 @@ const styles = {
           display:"block"
         },
         _hover:{
-          opacity:"0.3",
+          // opacity:"0.3",
           zIndex:0,
           ".icon":{
               color:'whiteAlpha.800'

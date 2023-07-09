@@ -3,8 +3,7 @@ import { loaderActions } from "./loaderSlice";
 import { usersSliceActions } from "./usersSlice";
 import { getToken } from '../utils/tokenVerify';
 import { toast } from "react-toastify";
-import { setAllUsersActivityPosts } from "./postActions";
-import { authActions } from "./authSlice";
+import { setAllPostsData, setAllUsersActivityPosts } from "./postActions";
 
 const setAllUsersData=()=>{
     return async(dispatch)=>{
@@ -13,6 +12,7 @@ const setAllUsersData=()=>{
             const {data:{users}}=await getAllUsersUsersService(); 
             console.log(users,"useraction") 
             dispatch(usersSliceActions.setAllUsers({users}));
+            dispatch(setAllPostsData());
             dispatch(setAllUsersActivityPosts());
         }
         catch(error){
