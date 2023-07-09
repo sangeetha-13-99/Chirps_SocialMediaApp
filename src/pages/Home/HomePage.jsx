@@ -10,7 +10,7 @@ export const HomePage = () => {
   // console.log(user,"home")
   return (
     <Box >
-      <NewPost/>
+      <NewPost isOverlay={false}/>
       <Filter/>
       <HomePosts/>
     </Box>

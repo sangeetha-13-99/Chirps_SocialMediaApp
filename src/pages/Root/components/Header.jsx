@@ -1,18 +1,21 @@
-import { Avatar, Box, HStack, Image, Input, InputGroup, InputLeftElement, Slide, Text, VStack, useColorModeValue } from '@chakra-ui/react'
+import { Avatar, Box, HStack, Image, Input, InputGroup, InputLeftElement, Slide, Text, VStack, useColorModeValue, useDisclosure } from '@chakra-ui/react'
 import { Fragment, useState } from 'react'
-import { Close, Expand,Logout, People, Search } from '../../../utils/icons'
+import { Close, Expand,Logout, People,Search } from '../../../utils/icons'
 import { useDispatch, useSelector } from 'react-redux';
 import appImage from "../../../assets/appImage.png"
 import appImageDark from "../../../assets/appImageDark.png"
 import { authActions } from '../../../store/authSlice';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Overlay } from '../../../common/Overlay';
+import { Search as SearchComponent } from '../../Home/components/Search';
 
 export const Header = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [toggleSideBar,setToggleSideBar]=useState(false);
     const {user}=useSelector((state)=>state.auth);
+    const {isOpen,onClose,onOpen}=useDisclosure();
     
     const logOutHandler=()=>{
       dispatch(authActions.LogOut());
@@ -32,7 +35,7 @@ export const Header = () => {
               </Box>
             </HStack>
             <HStack display={{lg:'block',base:'none'}}>
-                <InputGroup>
+                <InputGroup onClick={onOpen}>
                     <InputLeftElement pointerEvents='none'>
                     <Search className="icon" style={{"scale":" 1.4 1.4"}} />
                     </InputLeftElement>
@@ -52,15 +55,18 @@ export const Header = () => {
                     {/*  on click show followers on model */}
                     <Box display="inline-flex" alignItems="center" gap="4" p="1rem" w="100%">
                         <People className="icon" display="inline-block" style={{"scale":" 1.4 1.4"}} />
-                        <Text>Followers</Text>
+                        <Text>who to Follow</Text>
                     </Box>
                     {/* on click log out */}
-                    <Box display="inline-flex" alignItems="center" gap="4" p="1rem" w="100%">
-                        <Logout className="icon" onClick={logOutHandler} style={{"scale":" 1.4 1.4"}} />
+                    <Box display="inline-flex" alignItems="center" gap="4" p="1rem" w="100%"  onClick={logOutHandler} >
+                        <Logout className="icon"style={{"scale":" 1.4 1.4"}} />
                         <Text>Logout</Text>
                     </Box>
                 </VStack>
             </Slide>
+            <Overlay open={isOpen} close={onClose}>
+                <SearchComponent/>
+            </Overlay>
     </Fragment>
   )
 }

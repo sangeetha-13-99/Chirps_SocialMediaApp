@@ -1,12 +1,17 @@
-import { Avatar, Box, Flex, HStack, Link, Text, VStack, useColorModeValue } from "@chakra-ui/react"
+import { Avatar, Box, Flex, HStack, Link, Text, VStack, useDisclosure } from "@chakra-ui/react"
 import {  BookMark, Explore, Heart, Home, Post, Search } from "../../../utils/icons"
 import { useSelector } from "react-redux"
-import { Link as ReachLink, useLocation } from "react-router-dom"
+import { Link as ReachLink } from "react-router-dom"
+import { Overlay } from '../../../common/Overlay';
+import { Search as SearchComponent } from '../../Home/components/Search';
+import { NewPost } from "../../Home/components/NewPost";
 
 export const NavBar = () => {
     const {user}=useSelector((state)=>state.auth);
-   const {pathname}=useLocation();
-//     console.log(pathname,"nab")
+    const {isOpen,onClose,onOpen}=useDisclosure();
+    const {isOpen:isOpenPostModal,onClose:onClosePostModal,onOpen:onOpenPostModal}=useDisclosure();
+
+
   return (
     <Flex flexDirection={{base:"row",lg:"column"}} justifyContent="space-between" h="100%">
         <VStack flexDirection={{base:"row",lg:"column"}} justifyContent="space-between" alignItems="center" w="100%">
@@ -18,14 +23,14 @@ export const NavBar = () => {
                 <Explore className="icon"  style={{"scale":"2"}} />
                 <Text display={{lg:"inherit",base:"none"}}>Explore</Text>
             </Link>
-            <Link as={ReachLink}  display="inline-flex" alignItems="center" gap="4" p="1rem" w="100%">
+            <Box display="inline-flex" alignItems="center" gap="4" p="1rem" w="100%" cursor="pointer" onClick={onOpenPostModal}>
                 <Post className="icon" style={{"scale":" 1.5 1.5"}} />
                 <Text display={{lg:"inherit",base:"none"}}>Post</Text>
-            </Link>
-            <Link as={ReachLink}   display={{ base:"inline-flex",lg:"none"}} alignItems="center" gap="4" p="1rem" w="100%">
+            </Box>
+            <Box display={{ base:"inline-flex",lg:"none"}} alignItems="center" gap="4" p="1rem" w="100%" onClick={onOpen}>
                 <Search className="icon"  style={{"scale":"2"}} />
                 <Text display={{lg:"inherit",base:"none"}}>Search</Text>
-            </Link>
+            </Box>
             <Link as={ReachLink} to="/bookmark" display="inline-flex" alignItems="center" gap="4" p="1rem" w="100%">
                 <BookMark className="icon" style={{"scale":" 1.4 1.4"}} />
                 <Text display={{lg:"inherit",base:"none"}}>BookMark</Text>
@@ -42,7 +47,12 @@ export const NavBar = () => {
                     {/* <Text color={gray}>{user.createdAt.slice(0,10)}</Text> */}
                 </Box>
         </HStack>
-     
+        <Overlay open={isOpen} close={onClose}>
+            <SearchComponent/>
+        </Overlay>
+        <Overlay open={isOpenPostModal} close={onClosePostModal}>
+          <NewPost isOverlay={true}/>
+        </Overlay>
     </Flex>
   )
 }

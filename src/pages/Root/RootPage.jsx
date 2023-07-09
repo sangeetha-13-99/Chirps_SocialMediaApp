@@ -1,16 +1,17 @@
-import { Avatar, Box, Grid, GridItem, HStack, Image, VStack, useColorModeValue } from "@chakra-ui/react";
+import {  Box, Grid, GridItem, VStack, useColorModeValue } from "@chakra-ui/react";
 import { Outlet } from "react-router"
 
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
-import { useSelector } from "react-redux";
 import { NavBar } from "./components/NavBar";
 import { Header } from "./components/Header";
 import { SideBar } from "./components/SideBar";
+import { ScrollToTop } from "../../services/ScrollToTop";
+import { useRef } from "react";
 
 
 export const RootPage = () => {
   // const {user}=useSelector((state)=>state.auth);
+  const mainContainer=useRef(null);
 
   // console.log(user,"user in rootpage")
   return (
@@ -26,10 +27,10 @@ export const RootPage = () => {
           <GridItem area={'header'} borderBottom="1px solid" borderBottomColor={useColorModeValue('gray.100','gray.700')} display="flex" justifyContent="space-between" alignItems="center" boxShadow="sm" p="2">
               <Header/>
           </GridItem>
-          <GridItem area={'nav'}  pos={{lg:"inherit",base:"fixed"}} w={{base:"100%",lg:"unset"}} bottom="0" p={{base:"1rem"}} boxShadow="sm" borderRight="1px solid" borderRightColor={useColorModeValue('gray.100','gray.700')}>
+          <GridItem area={'nav'}  pos={{lg:"inherit",base:"fixed"}} w={{base:"100%",lg:"unset"}} bottom="0" p={{base:"1rem"}} boxShadow="sm" borderRight="1px solid" borderRightColor={useColorModeValue('gray.100','gray.700')} >
               <NavBar/>      
           </GridItem>
-          <GridItem area={'main'} boxShadow="sm" overflowY="auto" h="auto">
+          <GridItem area={'main'} boxShadow="sm" overflowY="auto" h="auto" ref={mainContainer}>
             <Outlet/> 
           </GridItem>
           <GridItem area={'side'}  position={{lg:'inherit',base:'fixed'}} boxShadow="sm" borderLeft="1px solid" borderLeftColor={useColorModeValue('gray.100','gray.700')} >
@@ -41,7 +42,7 @@ export const RootPage = () => {
             
           </GridItem>
         </Grid>
-        
+			<ScrollToTop mainContainerRef={mainContainer}/>
     </Box>
   )
 }

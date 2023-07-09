@@ -7,7 +7,7 @@ import {uploadFile} from "../../../utils/uploadFile"
 import { createNewPost } from "../../../store/postActions"
 
 
-export const NewPost = () => {
+export const NewPost = ({isOverlay}) => {
   const dispatch=useDispatch();
   const {user}=useSelector((state)=>state.auth);
   const fileInputRef=useRef(null);
@@ -62,12 +62,12 @@ export const NewPost = () => {
   }
 
   return (
-        <Card borderRadius="none" p="4">
+        <Card borderRadius="none" p={isOverlay?"none":"4"} boxShadow={isOverlay?"none":"md"}>
           <CardBody minH="20vh" p="0">
             <HStack alignItems="flex-start">
                 <Avatar src={user.userImage}/>
-                <VStack p="4">
-                  <Textarea resize="none" border="none" outline="none"  mt="0" placeholder="Whats Happening ?" onChange={(e)=>setValue(prev=>({...prev,text:e.target.value}))} value={value.text} >
+                <VStack p="4" w="100%">
+                  <Textarea resize="none" border="none"  outline="none"  mt="0" placeholder="Whats Happening ?" onChange={(e)=>setValue(prev=>({...prev,text:e.target.value}))} value={value.text} >
                   </Textarea>
                   {
                     (value.mediaUrl!=="") &&
@@ -89,7 +89,8 @@ export const NewPost = () => {
                     </FormLabel>
                     <Input ref={fileInputRef} type='file' w="0" h="0" accept="image/*, video/*" pos="absolute" border="none" onChange={uploadFileHandler} />
                 </FormControl>
-              <Button bg="red.400" color="white" onClick={postSubmitHandler}>Post</Button>
+                <Button bg="red.400" color="white" onClick={postSubmitHandler}>Post</Button>
+                  
             </Flex>
           </CardFooter>
         </Card>
