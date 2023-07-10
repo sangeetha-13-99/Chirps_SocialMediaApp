@@ -42,7 +42,7 @@ const editPost=(post)=>{
     return async(dispatch)=>{
         const token=getToken();
         try{
-            dispatch(loaderActions.setLoading({loading:true}))
+            dispatch(loaderActions.setLoading({loading:true}));
             const {data:{posts}}=await editPostPostService(post,token);
             console.log(post,"edited",posts)
             dispatch(postSliceActions.setAllPosts({posts}));

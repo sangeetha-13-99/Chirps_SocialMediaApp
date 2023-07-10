@@ -1,17 +1,18 @@
 import { Avatar, Box, Button, Card, CardBody, CardFooter, Flex, FormControl, FormLabel, HStack, Image, Input, Textarea, VStack } from "@chakra-ui/react"
 import { useDispatch, useSelector } from "react-redux"
 import { toast } from "react-toastify"
-import { Close, Image as ImageIcon } from "../../../utils/icons"
+import { Close, Image as ImageIcon } from "../utils/icons"
 import { useRef, useState } from "react"
-import {uploadFile} from "../../../utils/uploadFile"
-import { createNewPost } from "../../../store/postActions"
-import { fileUploadHandler } from "../../../utils/fileUpload"
-// import { useEffect } from "react"
+import {uploadFile} from "../utils/uploadFile"
+import { createNewPost, editPost } from "../store/postActions"
+import { useEffect } from "react"
+import { postSliceActions } from "../store/postSlice"
 
 
-export const NewPost = () => {
+export const PostOverlay = ({close}) => {
   const dispatch=useDispatch();
   const {user}=useSelector((state)=>state.auth);
+  const {currentEditPost}=useSelector(state=>state.post);
   const fileInputRef=useRef(null);
   const [value,setValue]=useState({
     text:"",
@@ -19,13 +20,27 @@ export const NewPost = () => {
     url:""
   });
 
-  const uploadFileHandler=(e)=>{
-    const isUploaded=fileUploadHandler(e);
-    if(isUploaded){
-      const file=e.target.files[0]
-      setValue(prev=>({...prev,mediaUrl:file,url:URL.createObjectURL(file)}));
+  useEffect(()=>{
+    if(currentEditPost){
+      setValue({text:currentEditPost.content,url:currentEditPost.mediaUrl,mediaUrl:""});
     }
-    return;
+  },[currentEditPost]);
+
+  const uploadFileHandler=(e)=>{
+    const file=e.target.files[0]
+    const size=Math.round(file.size/1048576);
+    if(size>1){
+      toast.warn('upload files less than 1 mb');
+      return
+    }else{
+      if(file.type.split('/')[0]==="image" || file.type.split('/')[0]==="video" ){
+        setValue(prev=>({...prev,mediaUrl:file,url:URL.createObjectURL(file)}));
+      }
+      else{
+        toast.warn('upload Image or video files only');
+      }
+      return ;
+    }
   }
 
   const removeFileHandler=()=>{
@@ -44,7 +59,13 @@ export const NewPost = () => {
         if(value.mediaUrl){
           try{
             let {url}= await uploadFile(value.mediaUrl);
-            dispatch(createNewPost({mediaUrl:url,content:value.text.trim()}));
+            console.log(currentEditPost,!(currentEditPost===null),"checking")
+            if(currentEditPost===null){
+              dispatch(createNewPost({mediaUrl:url,content:value.text.trim()}));
+            }
+            else{
+              dispatch(editPost({...currentEditPost,mediaUrl:url,content:value.text.trim()}));
+            }
             setValue({text:'',mediaUrl:"",url:""});
           }
           catch(error){
@@ -52,14 +73,21 @@ export const NewPost = () => {
           }
         }
         else{
-          dispatch(createNewPost({mediaUrl:"",content:value.text.trim()}));
+            if(currentEditPost===null){
+                dispatch(createNewPost({mediaUrl:value.url,content:value.text.trim()}));
+            }
+            else{
+              dispatch(editPost({...currentEditPost,mediaUrl:value.url,content:value.text.trim()}));
+            }
           setValue({text:'',mediaUrl:"",url:""});
         }
+        dispatch(postSliceActions.setCurrentEditPost({post:null}));
+        close();
       }
   }
 
   return (
-        <Card borderRadius="none" p="4" boxShadow="md">
+        <Card borderRadius="none" p="none" boxShadow="none">
           <CardBody minH="20vh" p="0">
             <HStack alignItems="flex-start">
                 <Avatar src={user.userImage}/>
@@ -67,9 +95,9 @@ export const NewPost = () => {
                   <Textarea resize="none" border="none"  outline="none"  mt="0" placeholder="Whats Happening ?" onChange={(e)=>setValue(prev=>({...prev,text:e.target.value}))} value={value.text} >
                   </Textarea>
                   {
-                    (value.mediaUrl!=="") &&
+                    (value.mediaUrl!==""||value.url!=="") &&
                     <Box pos="relative">
-                        {value.mediaUrl.type.split("/")[0]==="image"? <Image src={value.url} alt="post media" w="200" h="200" />:value.mediaUrl.type.split("/")[0]==="video"?<video width="200" height="200" controls >
+                        {((value.mediaUrl && value.mediaUrl.type.split("/")[0]==="image")||['webp','jpg','jpeg','png','avif'].includes(value.url.split('/').pop().split('.').pop()))? <Image src={value.url} alt="post media" w="200" h="200" />:value.mediaUrl.type.split("/")[0]==="video"?<video width="200" height="200" controls >
                         <source src={value.url} type={value.mediaUrl && value.mediaUrl.type}/>
                         </video>:''}
                         <Close cursor="pointer" color="red.400" borderColor="red.400" borderRadius="50%" border="1.5px solid" pos="absolute" top="4" right="4" onClick={removeFileHandler} />
@@ -86,7 +114,7 @@ export const NewPost = () => {
                     </FormLabel>
                     <Input ref={fileInputRef} type='file' w="0" h="0" accept="image/*, video/*" pos="absolute" border="none" onChange={uploadFileHandler} />
                 </FormControl>
-                <Button bg="red.400" color="white" onClick={postSubmitHandler}>Post</Button>
+                <Button bg="red.400" color="white" onClick={postSubmitHandler}>{currentEditPost?"Edit":"Post"}</Button>
             </Flex>
           </CardFooter>
         </Card>

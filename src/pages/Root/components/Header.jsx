@@ -16,7 +16,7 @@ export const Header = () => {
     const [toggleSideBar,setToggleSideBar]=useState(false);
     const {user}=useSelector((state)=>state.auth);
     const {isOpen,onClose,onOpen}=useDisclosure();
-    
+    console.log(user,"user in header")
     const logOutHandler=()=>{
       dispatch(authActions.LogOut());
     }

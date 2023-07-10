@@ -25,7 +25,8 @@ const styles = {
     },
     ".icon":{
       color:"red.400",
-      display:"inline-block"
+      display:"inline-block",
+      cursor:"pointer"
     },
     ".card-icon":{
         borderRadius:"100%",

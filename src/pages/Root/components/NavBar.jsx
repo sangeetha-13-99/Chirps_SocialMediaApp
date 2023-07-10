@@ -4,7 +4,8 @@ import { useSelector } from "react-redux"
 import { Link as ReachLink } from "react-router-dom"
 import { Overlay } from '../../../common/Overlay';
 import { Search as SearchComponent } from '../../Home/components/Search';
-import { NewPost } from "../../Home/components/NewPost";
+import { PostOverlay } from "../../../common/PostOverlay";
+// import { NewPost } from "../../Home/components/NewPost";
 
 export const NavBar = () => {
     const {user}=useSelector((state)=>state.auth);
@@ -51,7 +52,7 @@ export const NavBar = () => {
             <SearchComponent/>
         </Overlay>
         <Overlay open={isOpenPostModal} close={onClosePostModal}>
-          <NewPost isOverlay={true}/>
+          <PostOverlay close={onClosePostModal}/>
         </Overlay>
     </Flex>
   )

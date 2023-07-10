@@ -6,10 +6,9 @@ export const postSlice=createSlice({
     initialState:{
        posts:[],
        usersActivityPosts:[],
-      //  userPosts:[],
        sortBy:"latest",
-       loading:false
-    
+       loading:false,
+       currentEditPost:null
     },
     reducers:{
       setAllPosts:(state,action)=>{
@@ -26,6 +25,9 @@ export const postSlice=createSlice({
       },
       setSortBy:(state,action)=>{
         state.sortBy=action.payload.sortBy
+      },
+      setCurrentEditPost:(state,action)=>{
+        state.currentEditPost=action.payload.post
       }
     }
 })

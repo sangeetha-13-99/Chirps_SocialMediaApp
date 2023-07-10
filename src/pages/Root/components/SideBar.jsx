@@ -11,7 +11,7 @@ export const SideBar = () => {
     const unfollowedUsers=Allusers.filter((cUser)=>{
         const {followers}=cUser;
         if(cUser._id !==user._id && (!followers.some((fUser)=>fUser._id===user._id)||followers.length===0)){
-            return true
+            return true;
         }
         return false;
     });

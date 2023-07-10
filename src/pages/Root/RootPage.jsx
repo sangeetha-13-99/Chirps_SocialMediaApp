@@ -1,4 +1,4 @@
-import {  Box, Grid, GridItem, VStack, useColorModeValue } from "@chakra-ui/react";
+import {  Box, Grid, GridItem, VStack, useColorModeValue ,Text} from "@chakra-ui/react";
 import { Outlet } from "react-router"
 
 import "react-toastify/dist/ReactToastify.css";
@@ -38,8 +38,8 @@ export const RootPage = () => {
               <SideBar/>
             </VStack>
           </GridItem>
-          <GridItem area={'footer'}>
-            
+          <GridItem area={'footer'} textAlign="center">
+            <Text>Copy right @SangeethaJula 2023</Text>
           </GridItem>
         </Grid>
 			<ScrollToTop mainContainerRef={mainContainer}/>

@@ -1,14 +1,19 @@
-import { Avatar, Box, Card, CardBody, CardFooter, CardHeader, HStack, Text, VStack,Image, useColorModeValue, Popover, PopoverTrigger, PopoverContent, PopoverCloseButton, PopoverBody, AspectRatio } from "@chakra-ui/react"
+import { Avatar, Box, Card, CardBody, CardFooter, CardHeader, HStack, Text, VStack,Image, useColorModeValue, Popover, PopoverTrigger, PopoverContent, PopoverCloseButton, PopoverBody, AspectRatio, useDisclosure } from "@chakra-ui/react"
 import { useDispatch, useSelector } from "react-redux"
 import { ActiveBookMark, ActiveHeart, BookMark,Comment, Delete, Edit, Expand, Heart, Share } from "../utils/icons";
 import { Link as ReachLink} from "react-router-dom";
 import { deletePost, dislikePost, editPost, likePost } from "../store/postActions";
 import { Fragment } from "react";
 import { UnfollowUser, addBookmarkPost, followUser, removeBookmarkPost } from "../store/usersAction";
+import { postSliceActions } from "../store/postSlice";
+import { Overlay } from "./Overlay";
+// import { NewPost } from "../pages/Home/components/NewPost";
+import { PostOverlay } from "./PostOverlay";
 
 
 export const PostCard = ({post}) => {
   const dispatch=useDispatch();
+  const {isOpen,onOpen,onClose}=useDisclosure();
   const {user}=useSelector(state=>state.auth)
   const {Allusers}=useSelector(state=>state.user);
 
@@ -36,16 +41,23 @@ export const PostCard = ({post}) => {
   console.log(isBookMarked,isLiked,post.likes.likedBy)
  
   return (
+    <Fragment>
+    <Overlay open={isOpen} close={onClose}>
+      <PostOverlay close={onClose}/>
+    </Overlay>
     <Card boxShadow="md" my="2"  w="100%" borderRadius="10px" bg={gray} border="1px solid" borderColor={borderGray} pos="relative">
       <VStack  w="100%">
             <CardHeader alignSelf="start" w="100%">
                 <HStack w="100%" justifyContent="space-between">
                     <HStack as={ReachLink} to={`/profile/${getPostUser._id}`} alignSelf="flex-end" >
                         <Avatar src={getPostUser.userImage}/>
-                        <Box >
+                        <Box>
                             <Text fontWeight="bold">{getPostUser.userHandler}</Text>
                             <Text>{post.createdAt.slice(0,10)}</Text>
                         </Box>
+                        {/* <Box>
+                          <Text>{ new Date(post.createdAt).get}</Text>
+                        </Box> */}
                     </HStack>
                     <Box alignSelf="center" px="4">
                       <Popover>
@@ -58,7 +70,10 @@ export const PostCard = ({post}) => {
                             <VStack className="customBg">
                                 {currentUser._id===getPostUser._id?
                                 <Fragment>
-                                  <Box className="post-popup" >
+                                  <Box className="post-popup" onClick={()=>{
+                                    dispatch(postSliceActions.setCurrentEditPost({post}));
+                                    onOpen();
+                                  }}>
                                       <Edit className="icon"  />
                                       <Text>Edit</Text>
                                   </Box>
@@ -120,5 +135,6 @@ export const PostCard = ({post}) => {
             </CardFooter>
         </VStack>
     </Card>
+    </Fragment>
   )
 }

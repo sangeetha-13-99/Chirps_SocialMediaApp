@@ -1,9 +1,10 @@
-import { addBookMarkUsersService, followUserUserService, getAllUsersUsersService, removeBookmarkUsersService, unfollowUserUserService } from "../apiServices/usersService";
+import { addBookMarkUsersService, editUserUsersService, followUserUserService, getAllUsersUsersService, removeBookmarkUsersService, unfollowUserUserService } from "../apiServices/usersService";
 import { loaderActions } from "./loaderSlice";
 import { usersSliceActions } from "./usersSlice";
 import { getToken } from '../utils/tokenVerify';
 import { toast } from "react-toastify";
 import { setAllPostsData, setAllUsersActivityPosts } from "./postActions";
+import { authActions } from "./authSlice";
 
 const setAllUsersData=()=>{
     return async(dispatch)=>{
@@ -17,6 +18,27 @@ const setAllUsersData=()=>{
         }
         catch(error){
             console.log(error)
+        }
+        finally{
+            dispatch(loaderActions.setLoading({loading:false}));
+        }
+    }
+}
+
+const editUser=(userData)=>{
+    return async(dispatch)=>{
+        const token=getToken();
+        try{
+            dispatch(loaderActions.setLoading({loading:true}));
+            const {data:{user}}=await editUserUsersService(userData,token);
+            console.log(user,"editUser",userData)
+            dispatch(setAllUsersData());
+            const {_id,firstName,lastName,username,userHandler,userImage,createdAt}=user
+            dispatch(authActions.setUser({_id,firstName,lastName,username,userHandler,userImage,createdAt}));
+            toast.info('profile saved');
+        }
+        catch(error){
+            toast.error(`unable to save profile`)
         }
         finally{
             dispatch(loaderActions.setLoading({loading:false}));
@@ -106,5 +128,6 @@ export {
     followUser,
     UnfollowUser,
     addBookmarkPost,
-    removeBookmarkPost
+    removeBookmarkPost,
+    editUser
 }

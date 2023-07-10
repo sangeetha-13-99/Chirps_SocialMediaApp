@@ -27,7 +27,7 @@ export const authSlice=createSlice({
             state.user={};
         },
         setUser:(state,action)=>{
-          state.user=action.payload.user
+          state.user=action.payload
         }
     }
 })
