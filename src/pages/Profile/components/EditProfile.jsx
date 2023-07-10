@@ -36,7 +36,7 @@ export const EditProfile = ({profile}) => {
         <HStack justifyContent="space-around" flexWrap="wrap">
             {
                 avatarImage.map((image,index)=>{
-                    return <Avatar key={index} src={image} size="lg" border="1px solid"  borderColor="red.400" onClick={selectAvatar} />
+                    return <Avatar key={index} src={image} size="lg" border="1px solid"  borderColor="red.400"  />
                 })
             }
         </HStack>
