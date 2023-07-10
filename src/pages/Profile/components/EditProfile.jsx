@@ -7,7 +7,7 @@ import {  avatarImage } from "./Avatars"
 
 
 
-export const EditProfile = ({profile}) => {
+export const EditProfile = ({profile,close}) => {
     const dispatch=useDispatch();
     const [prof,setProf]=useState({
         firstName:"",
@@ -22,6 +22,7 @@ export const EditProfile = ({profile}) => {
 
     const editProfileHandler=()=>{
         dispatch(editUser({...profile,...prof}));
+        close();
     }
 
     useEffect(()=>{

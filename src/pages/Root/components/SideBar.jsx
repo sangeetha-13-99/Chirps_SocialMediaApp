@@ -16,7 +16,7 @@ export const SideBar = () => {
         return false;
     });
   return (
-    <Card textAlign="center" p="4" w="80%" borderRadius="none" display={{lg:"block",base:"none"}} margin="0 auto" bg={gray}>
+    <Card textAlign="center" p="4" w="80%" maxH="90%" overflowY="auto" borderRadius="none" display={{lg:"block",base:"none"}} margin="0 auto" bg={gray}>
         {
            unfollowedUsers.map((user)=>{
              return (<FollowerCard key={user._id} user={user}/>)

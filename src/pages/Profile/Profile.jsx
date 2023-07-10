@@ -73,7 +73,7 @@ export const Profile = () => {
         </CardFooter>
       </Card>
       <Overlay open={isOpen} close={onClose}>
-        <EditProfile profile={getCurrentUser}/>
+        <EditProfile profile={getCurrentUser} close={onClose}/>
       </Overlay>
       <Box>
       {profilePosts.length>0 &&
