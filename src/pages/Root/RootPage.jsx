@@ -10,10 +10,8 @@ import { useRef } from "react";
 
 
 export const RootPage = () => {
-  // const {user}=useSelector((state)=>state.auth);
   const mainContainer=useRef(null);
 
-  // console.log(user,"user in rootpage")
   return (
     <Box h="100vh">
         <Grid h="100%" templateAreas={{lg:`"header header header"

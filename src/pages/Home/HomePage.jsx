@@ -6,8 +6,7 @@ import { HomePosts } from "./components/HomePosts";
 
 
 export const HomePage = () => {
-  // const {user}=useSelector((state)=>state.auth);
-  // console.log(user,"home")
+
   return (
     <Box >
       <NewPost isOverlay={false}/>

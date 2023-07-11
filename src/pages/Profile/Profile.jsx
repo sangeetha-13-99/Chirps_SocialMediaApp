@@ -19,7 +19,6 @@ export const Profile = () => {
   const getCurrentUser=Allusers.find(cUser=>cUser._id===profileId);
   const {profilePosts}=useSelector(state=>state.profile);
 
-  console.log(profilePosts,"profielpost")
   useEffect(()=>{
     dispatch(setAllUsersPosts(getCurrentUser.username));
     // dispatch(profileSliceActions.setProfile(getCurrentUser));

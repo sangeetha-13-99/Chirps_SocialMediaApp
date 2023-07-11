@@ -9,7 +9,6 @@ export const Search = () => {
     const [filteredData,setFilteredData]=useState([]);
     const {Allusers}=useSelector((state)=>state.user);
     const [fallBackText,setFallBackText]=useState("")
-    console.log(Allusers,"usersinnsearch")
     useEffect(()=>{
         const timer=setTimeout(()=>{
             let data;

@@ -18,7 +18,6 @@ export const EditProfile = ({profile,close}) => {
     });
 
 
-    console.log(prof)
 
     const editProfileHandler=()=>{
         dispatch(editUser({...profile,...prof}));

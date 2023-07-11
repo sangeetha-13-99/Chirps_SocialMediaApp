@@ -10,7 +10,6 @@ const likePost=(postId)=>{
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await likePostPostService(postId,token);
-            console.log(postId,"liked",posts)
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
         }catch(error){
@@ -27,7 +26,6 @@ const dislikePost=(postId)=>{
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await dislikePostPostService(postId,token);
-            console.log(postId,"disliked",posts)
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
         }catch(error){
@@ -44,7 +42,6 @@ const editPost=(post)=>{
         try{
             dispatch(loaderActions.setLoading({loading:true}));
             const {data:{posts}}=await editPostPostService(post,token);
-            console.log(post,"edited",posts)
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
             toast.success('Post Edited Succesfully');
@@ -59,7 +56,6 @@ const editPost=(post)=>{
 const deletePost=(postId)=>{
     return async(dispatch)=>{
         const token=getToken();
-        // console.log(postId,"deleted",token,await deletePostPostService(postId,token))
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await deletePostPostService(postId,token);
@@ -81,7 +77,6 @@ const createNewPost=(post)=>{
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await addPostPostService(post,token);
-            console.log(post,"craetedPosts",posts)
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
             toast.success('Post Added')
@@ -117,7 +112,6 @@ const setAllUsersActivityPosts=()=>{
         const {following}=getState().user.Allusers.find(({username:currUsername})=>currUsername===username);
         const {sortBy}=getState().post;
 
-        console.log(username,following,getState().auth);
 
         try{
             dispatch(loaderActions.setLoading({loading:true}));
@@ -146,7 +140,6 @@ const setAllUsersActivityPosts=()=>{
 }
 
 const setSortByAllUsersActivityPosts=(sortBy)=>{
-    console.log('sortBy')
     return (dispatch,getState)=>{
         const {usersActivityPosts}=getState().post;
         const usersPosts=[...usersActivityPosts];
@@ -167,7 +160,6 @@ const setSortByAllUsersActivityPosts=(sortBy)=>{
         }
         else if(sortBy==="trending"){
             const trendingusersActivityPosts=usersPosts.sort((postA,postB)=>{
-                console.log(postA.likes.likeCount,postA.comments.length,postB.likes.likeCount,postB.comments.length,"count")
                 const postACount=Number(postA.likes.likeCount)+Number(postA.comments.length);
                 const postBCount=Number(postB.likes.likeCount)+Number(postB.comments.length);
                 if(postACount > postBCount){
@@ -180,7 +172,6 @@ const setSortByAllUsersActivityPosts=(sortBy)=>{
                     return 0;
                 }
             }); 
-            console.log("trend",trendingusersActivityPosts);
             dispatch(postSliceActions.setUsersActivityPosts({posts:trendingusersActivityPosts}));
         }
         dispatch(postSliceActions.setSortBy({sortBy}));

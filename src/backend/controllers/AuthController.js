@@ -46,7 +46,6 @@ export const signupHandler = function (schema, request) {
       { _id, username },
       import.meta.env.VITE_REACT_APP_JWT_SECRET
     );
-    console.log(createdUser, encodedToken,"signup")
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {
     return new Response(
@@ -69,7 +68,6 @@ export const loginHandler = function (schema, request) {
   const { username, password } = JSON.parse(request.requestBody);
   try {
     const foundUser = schema.users.findBy({ username: username });
-    console.log(schema.users.findBy({ username: username }),"schema users")
     if (!foundUser) {
       return new Response(
         404,

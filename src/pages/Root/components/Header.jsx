@@ -5,18 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import appImage from "../../../assets/appImage.png"
 import appImageDark from "../../../assets/appImageDark.png"
 import { authActions } from '../../../store/authSlice';
-import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Overlay } from '../../../common/Overlay';
 import { Search as SearchComponent } from '../../Home/components/Search';
 
 export const Header = () => {
     const dispatch=useDispatch();
-    const navigate=useNavigate();
     const [toggleSideBar,setToggleSideBar]=useState(false);
     const {user}=useSelector((state)=>state.auth);
     const {isOpen,onClose,onOpen}=useDisclosure();
-    console.log(user,"user in header")
     const logOutHandler=()=>{
       dispatch(authActions.LogOut());
     }

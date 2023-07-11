@@ -5,7 +5,6 @@ import { FollowerCard } from "../../../common/FollowerCard";
 export const SideBar = () => {
     const {Allusers}=useSelector(state=>state.user);
     const {user}=useSelector(state=>state.auth);
-    console.log("sidebar",Allusers);
   const gray=useColorModeValue('WhiteAlpha 900','gray.700');
 
     const unfollowedUsers=Allusers.filter((cUser)=>{

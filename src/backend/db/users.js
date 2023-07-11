@@ -1,12 +1,5 @@
-// import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
-/**
- * User Database can be added here.
- * You can add default users of your wish with different attributes
- * */
-// for(let i=0;i<10;i++){
-//   console.log(uuid(),i)
-// }
+
 export const users = [
   {
     _id: "6a6b43f2-b6dd-47f2-ba43-625b6ee2a707",

@@ -1,14 +1,3 @@
-// import { v4 as uuid } from "uuid";
-import { formatDate } from "../utils/authUtils";
-
-/**
- * Posts can be added here.
- * You can add default posts of your wish with different attributes
- * */
-
-// for (let i=0;i<20;i++){
-//   console.log(uuid())
-// }
 export const posts = [
  
   {

@@ -3,7 +3,6 @@ const CLOUDINARY_URL_VIDEO = "https://api.cloudinary.com/v1_1/chirpssocialmediaa
 const CLOUDINARY_UPLOAD_PRESET = "chirps_social_media_app";
 
 export const uploadFile = async(file) => {
-    console.log(file,file.type.split('/')[0],"upload")
   const fileData = file;
   const formData = new FormData();
     formData.append("file", fileData);

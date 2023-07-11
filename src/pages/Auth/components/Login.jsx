@@ -29,7 +29,6 @@ export const Login = () => {
     });
 
     const loginHelper=async(username,password)=>{
-      console.log(username,password)
       try {
         dispatch(loaderActions.setLoading(true));
         if (username.trim() === "" || password.trim() === "") {
@@ -38,9 +37,7 @@ export const Login = () => {
         const 
           {data: { foundUser, encodedToken },status} = await loginService(username,password);
 
-        console.log(data,"data");
         if (status === 200) {
-          console.log(foundUser,encodedToken,"loggedIN")
           setToken(encodedToken);
           const {_id,firstName,lastName,username,userHandler,userImage,createdAt}=foundUser;
           dispatch(authActions.LoggedIn({_id,firstName,lastName,username,userHandler,userImage,createdAt}));
@@ -51,7 +48,6 @@ export const Login = () => {
           return navigate(state!==null?state:"/");
         }
       } catch ({response}) {
-        console.log(response)
         response.status===404 && toast.error('login Failed');
         response.status===404 ? 
           setLoginError("The email you entered is not Registered. create new account")

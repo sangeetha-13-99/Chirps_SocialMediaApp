@@ -17,7 +17,6 @@ export const PostCard = ({post}) => {
   const {user}=useSelector(state=>state.auth)
   const {Allusers}=useSelector(state=>state.user);
 
-  console.log(user,"user on post",Allusers)
   const currentUser=Allusers.find((cUser)=>cUser._id===user._id);
   const getPostUser=Allusers.find(user=>user.username===post.username);
   const gray=useColorModeValue('WhiteAlpha 900','gray.700');
@@ -37,8 +36,7 @@ export const PostCard = ({post}) => {
 
   const isFollowing=getPostUser.followers.some((postUser)=>postUser._id===currentUser._id);
   const isLiked=post.likes.likedBy.some((likedUsers)=>likedUsers._id===currentUser._id);
-  const isBookMarked=currentUser.bookmarks.some((bookmarkPost)=>bookmarkPost._id===post._id);
-  console.log(isBookMarked,isLiked,post.likes.likedBy)
+  const isBookMarked=currentUser.bookmarks.some((bookmarkPostId)=>bookmarkPostId===post._id);
  
   return (
     <Fragment>
@@ -74,7 +72,7 @@ export const PostCard = ({post}) => {
                                     dispatch(postSliceActions.setCurrentEditPost({post}));
                                     onOpen();
                                   }}>
-                                      <Edit className="icon"  />
+                                      <Edit className="icon" />
                                       <Text>Edit</Text>
                                   </Box>
                                   <Box className="post-popup" onClick={()=>dispatch(deletePost(post._id))}>
@@ -112,23 +110,23 @@ export const PostCard = ({post}) => {
             <CardFooter w="100%" pt="0" pl="16">
               <HStack justifyContent="space-between"  w="100%" pt="4" borderTop="1px solid" borderColor={borderGray}>
                 <Box display="inline-flex" alignItems="center">
-                  <Box className="card-icon red" >
+                  <Box className="card-icon " >
                     {!isLiked?<Heart className="icon" onClick={()=>dispatch(likePost(post._id))}/>:<ActiveHeart className="icon" onClick={()=>dispatch(dislikePost(post._id))} />}
                   </Box>
                   <Text>{post.likes.likeCount}</Text>
                 </Box>
                 <Box display="inline-flex" alignItems="center">
-                  <Box className="card-icon orange">
+                  <Box className="card-icon ">
                     <Comment className="icon "/>
                   </Box>
                   <Text>{post.comments.length}</Text>
                 </Box>
-                <Box className="card-icon blue">
+                <Box className="card-icon ">
                   {!isBookMarked?
                   <BookMark className="icon" onClick={()=>dispatch(addBookmarkPost(post))}/>:
                   <ActiveBookMark  className="icon"  onClick={()=>dispatch(removeBookmarkPost(post))}/>}
                 </Box>
-                <Box className="card-icon green">
+                <Box className="card-icon ">
                   <Share className="icon "/>
                 </Box>
               </HStack>

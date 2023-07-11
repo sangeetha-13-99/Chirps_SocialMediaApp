@@ -36,7 +36,6 @@ export const NewPost = () => {
 
 
   const postSubmitHandler= async()=>{
-    console.log(value,!value.text.trim() || !value.mediaUrl)
       if(!value.text.trim() && !value.mediaUrl && !value.url){
         return 
       }

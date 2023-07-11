@@ -11,7 +11,6 @@ const setAllUsersData=()=>{
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{users}}=await getAllUsersUsersService(); 
-            console.log(users,"useraction") 
             dispatch(usersSliceActions.setAllUsers({users}));
             dispatch(setAllPostsData());
             dispatch(setAllUsersActivityPosts());
@@ -31,7 +30,6 @@ const editUser=(userData)=>{
         try{
             dispatch(loaderActions.setLoading({loading:true}));
             const {data:{user}}=await editUserUsersService(userData,token);
-            console.log(user,"editUser",userData)
             dispatch(setAllUsersData());
             const {_id,firstName,lastName,username,userHandler,userImage,createdAt}=user
             dispatch(authActions.setUser({_id,firstName,lastName,username,userHandler,userImage,createdAt}));
@@ -70,7 +68,6 @@ const UnfollowUser=(userUnfollower)=>{
         const token=getToken();
         try{
             dispatch(loaderActions.setLoading({loading:true}));
-            console.log(userUnfollower._id,"unfollowe") 
             await unfollowUserUserService(userUnfollower._id,token);
             dispatch(setAllUsersData());
             toast.info(`unfollowing @${userUnfollower.userHandler}`);
@@ -89,7 +86,6 @@ const addBookmarkPost=(post)=>{
         const token=getToken();
         try{
             dispatch(loaderActions.setLoading({loading:true}));
-            console.log(post._id,"unfollowe") 
             await addBookMarkUsersService(post._id,token);
             dispatch(setAllUsersData());
         }
@@ -107,7 +103,6 @@ const removeBookmarkPost=(post)=>{
         const token=getToken();
         try{
             dispatch(loaderActions.setLoading({loading:true}));
-            console.log(post._id,"unfollowe") 
             await removeBookmarkUsersService(post._id,token);
             dispatch(setAllUsersData());
         }

@@ -6,15 +6,23 @@ import { Fragment } from "react";
 export const BookMarksPage = () => {
   const {Allusers}=useSelector(state=>state.user);
   const {user}=useSelector(state=>state.auth);
+  const {posts}=useSelector(state=>state.post)
   const getCurrentUser=Allusers.find((cUser)=>cUser._id===user._id);
-  const explorePosts=getCurrentUser.bookmarks.map((post)=>{
+  const getAllBookMarks=getCurrentUser.bookmarks;
+  const bookMarksPost=posts.filter(post=>{
+    if(getAllBookMarks.includes(post._id)){
+      return true;
+    }
+    return false;
+  });
+  const renderBookMarkPost=bookMarksPost.map(post=>{
     return <PostCard key={post._id} post={post}/>
   })
   return (
     <Fragment>
-      {explorePosts.length>0?
+      {renderBookMarkPost.length>0?
         <Box>
-          {explorePosts}
+          {renderBookMarkPost}
         </Box>
         :
         <Box textAlign="center">

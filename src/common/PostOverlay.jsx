@@ -51,7 +51,6 @@ export const PostOverlay = ({close}) => {
 
 
   const postSubmitHandler= async()=>{
-    console.log(value,!value.text.trim() || !value.mediaUrl)
       if(!value.text.trim() && !value.mediaUrl && !value.url){
         return 
       }
@@ -59,7 +58,6 @@ export const PostOverlay = ({close}) => {
         if(value.mediaUrl){
           try{
             let {url}= await uploadFile(value.mediaUrl);
-            console.log(currentEditPost,!(currentEditPost===null),"checking")
             if(currentEditPost===null){
               dispatch(createNewPost({mediaUrl:url,content:value.text.trim()}));
             }
