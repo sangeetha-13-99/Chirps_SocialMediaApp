@@ -14,7 +14,8 @@ export const EditProfile = ({profile,close}) => {
         lastName:"",
         userHandler:"",
         bio:"",
-        link:""
+        link:"",
+        userImage:""
     });
 
 
@@ -25,18 +26,15 @@ export const EditProfile = ({profile,close}) => {
     }
 
     useEffect(()=>{
-        setProf({firstName:profile.firstName,lastName:profile.lastName,bio:profile.bio,link:profile.link,userHandler:profile.userHandler});
+        setProf({firstName:profile.firstName,lastName:profile.lastName,bio:profile.bio,link:profile.link,userHandler:profile.userHandler,userImage:profile.userImage});
     },[]);
 
-    // const selectAvatar=()=>{
-
-    // }
   return (
     <Box>
         <HStack justifyContent="space-around" flexWrap="wrap">
             {
                 avatarImage.map((image,index)=>{
-                    return <Avatar key={index} src={image} size="lg" border="1px solid"  borderColor="red.400"  />
+                    return <Avatar key={index} src={image} size="lg" border="1px solid"  borderColor="red.400"  onClick={(e)=>setProf(prev=>({...prev,userImage:e.target.src}))} cursor="pointer" />
                 })
             }
         </HStack>
