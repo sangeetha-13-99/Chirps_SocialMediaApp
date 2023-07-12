@@ -20,6 +20,7 @@ export const Profile = () => {
   const {profilePosts}=useSelector(state=>state.profile);
 
   useEffect(()=>{
+
     dispatch(setAllUsersPosts(getCurrentUser.username));
     // dispatch(profileSliceActions.setProfile(getCurrentUser));
   },[getCurrentUser.username,getCurrentUser,dispatch]);

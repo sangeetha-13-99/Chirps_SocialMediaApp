@@ -39,19 +39,19 @@ export const EditProfile = ({profile,close}) => {
             }
         </HStack>
         <Flex flexWrap="wrap" w="100%" justifyContent="space-between" gap="4">
-            <FormControl w="40%">
+            <FormControl w={{base:"100%",lg:"40%"}}>
                 <FormLabel>First Name</FormLabel>
                 <Input value={prof.firstName} onChange={(e)=>setProf(prev=>({...prev,firstName:e.target.value}))}/>
             </FormControl>
-            <FormControl  w="40%">
+            <FormControl w={{base:"100%",lg:"40%"}}>
                 <FormLabel>Last Name</FormLabel>
                 <Input value={prof.lastName} onChange={(e)=>setProf(prev=>({...prev,lastName:e.target.value}))}/>
             </FormControl>
-            <FormControl  w="40%">
+            <FormControl w={{base:"100%",lg:"40%"}}>
                 <FormLabel>User Handler</FormLabel>
                 <Input value={prof.userHandler} onChange={(e)=>setProf(prev=>({...prev,userHandler:e.target.value}))}/>
             </FormControl>
-            <FormControl  w="40%">
+            <FormControl  w={{base:"100%",lg:"40%"}}>
                 <FormLabel>Bio</FormLabel>
                 <Input value={prof.bio} onChange={(e)=>setProf(prev=>({...prev,bio:e.target.value}))}/>
             </FormControl> 

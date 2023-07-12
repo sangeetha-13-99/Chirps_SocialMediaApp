@@ -1,4 +1,4 @@
-import { Card, useColorModeValue } from "@chakra-ui/react"
+import { Box, Card, Text, useColorModeValue } from "@chakra-ui/react"
 import { useSelector } from "react-redux"
 import { FollowerCard } from "../../../common/FollowerCard";
 
@@ -16,11 +16,15 @@ export const SideBar = () => {
     });
   return (
     <Card textAlign="center" p="4" w="80%" maxH="90%" overflowY="auto" borderRadius="none" display={{lg:"block",base:"none"}} margin="0 auto" bg={gray}>
+      <Text fontFamily="heading" fontSize="2rem" color="red.400">Who To Follow</Text>
+      <Box>
         {
            unfollowedUsers.map((user)=>{
              return (<FollowerCard key={user._id} user={user}/>)
            }) 
         }
+      </Box>
+        
     </Card>
   )
 }

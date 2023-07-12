@@ -2,7 +2,7 @@ import { VStack, Input, Box, Text, InputLeftElement, InputGroup, InputRightEleme
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { UserCard } from '../../../common/UserCard';
-import { Close,Search as SearchIcon } from '../../../utils/icons';
+import { Search as SearchIcon } from '../../../utils/icons';
 
 export const Search = () => {
     const [searchValue,setSearchValue]=useState("");
@@ -13,8 +13,9 @@ export const Search = () => {
         const timer=setTimeout(()=>{
             let data;
             if(searchValue.length>2){
+                const searchedValue=searchValue.toLowerCase();
                 data=Allusers.filter((user)=>{
-                    if(user.firstName.includes(searchValue) || user.lastName.includes(searchValue) || user.username.includes(searchValue) ||user.userHandler.includes(searchValue) ){
+                    if(user.firstName.toLowerCase().includes(searchedValue) || user.lastName.toLowerCase().includes(searchedValue) || user.username.toLowerCase().includes(searchedValue) ||user.userHandler.toLowerCase().includes(searchedValue) ){
                         return true;
                     }
                     return false;

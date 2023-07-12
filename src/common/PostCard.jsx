@@ -110,23 +110,23 @@ export const PostCard = ({post}) => {
             <CardFooter w="100%" pt="0" pl="16">
               <HStack justifyContent="space-between"  w="100%" pt="4" borderTop="1px solid" borderColor={borderGray}>
                 <Box display="inline-flex" alignItems="center">
-                  <Box className="card-icon " >
+                  <Box className="card-icon red" >
                     {!isLiked?<Heart className="icon" onClick={()=>dispatch(likePost(post._id))}/>:<ActiveHeart className="icon" onClick={()=>dispatch(dislikePost(post._id))} />}
                   </Box>
                   <Text>{post.likes.likeCount}</Text>
                 </Box>
                 <Box display="inline-flex" alignItems="center">
                   <Box className="card-icon ">
-                    <Comment className="icon "/>
+                    <Comment className="icon orange"/>
                   </Box>
                   <Text>{post.comments.length}</Text>
                 </Box>
-                <Box className="card-icon ">
+                <Box className="card-icon blue">
                   {!isBookMarked?
                   <BookMark className="icon" onClick={()=>dispatch(addBookmarkPost(post))}/>:
                   <ActiveBookMark  className="icon"  onClick={()=>dispatch(removeBookmarkPost(post))}/>}
                 </Box>
-                <Box className="card-icon ">
+                <Box className="card-icon green">
                   <Share className="icon "/>
                 </Box>
               </HStack>

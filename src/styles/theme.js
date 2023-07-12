@@ -13,7 +13,7 @@ const config = {
 const styles = {
   global: (props) => ({
     "html, body": {
-      bg: props.colorMode === "dark" ? "gray.800" : "whiteAlpha.800",
+      bg: props.colorMode === "dark" ? "gray.800" : "whiteAlpha.500",
     },
     ".post-popup":{
       display:"inline-flex",
@@ -44,8 +44,8 @@ const styles = {
         },
     },
     ".card-icon.red":{
-      _hover:{
-       bg:'pink.400',
+        _hover:{
+         bg:'pink.400',
       }
     },
     ".card-icon.orange":{

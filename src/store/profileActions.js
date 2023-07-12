@@ -6,10 +6,9 @@ const setAllUsersPosts=(username)=>{
     return async(dispatch)=>{
         try{
            dispatch(loaderActions.setLoading({loading:true}))
-            const {data:{posts}}=await getAllUsersPostsPostService(username);  
+            const {data:{posts}}=await getAllUsersPostsPostService(username); 
+            console.log(posts) 
             dispatch(profileSliceActions.setProfilePosts({profilePosts:posts}));
-
-
         }
         catch(error){
             console.log(error)
