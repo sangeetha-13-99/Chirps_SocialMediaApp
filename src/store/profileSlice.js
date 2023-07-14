@@ -13,7 +13,6 @@ export const profileSlice=createSlice({
           state.profile=action.payload.profile;
         },
         setProfilePosts:(state,action)=>{
-            console.log(action.payload.profilePosts,"posts")
             state.profilePosts=action.payload.profilePosts;
         },
         setLoading:(state,action)=>{

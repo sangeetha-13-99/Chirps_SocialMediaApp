@@ -1,7 +1,7 @@
 import { chakra } from "@chakra-ui/react";
 import { FaAngleRight,FaAngleLeft,FaEyeSlash,FaEye,FaFilter} from "react-icons/fa6";
 import { MdMoreVert,MdClose,MdHome,MdOutlineHome,MdOutlineSearch,MdSearch,MdAccountCircle,MdOutlineAccountCircle,MdOutlineExplore,MdExplore,MdPeople,MdPeopleOutline,MdOutlineLogout,MdOutlineLocalFireDepartment,MdOutlineCalendarMonth,MdOutlineShare,MdOutlinePhotoCamera} from "react-icons/md";
-import {FaPlusCircle,FaPlus,FaBookmark,FaRegBookmark,FaHeart,FaRegHeart,FaImages,FaRegComment,FaRegTrashAlt,FaRegEdit,FaUserPlus} from "react-icons/fa"
+import {FaPlusCircle,FaPlus,FaBookmark,FaRegBookmark,FaHeart,FaRegHeart,FaImages,FaRegComment,FaRegTrashAlt,FaRegEdit,FaUserPlus,FaUserMinus} from "react-icons/fa"
 
 const RightIcon=chakra(FaAngleRight);
 const LeftIcon=chakra(FaAngleLeft);
@@ -36,6 +36,7 @@ const Delete=chakra(FaRegTrashAlt);
 const Edit=chakra(FaRegEdit);
 const Camera=chakra(MdOutlinePhotoCamera);
 const FollowUser=chakra(FaUserPlus);
+const UnFollowUser=chakra(FaUserMinus);
 export {
     RightIcon,
     LeftIcon,
@@ -69,5 +70,6 @@ export {
     Delete,
     Edit,
     Camera,
-    FollowUser
+    FollowUser,
+    UnFollowUser
 }

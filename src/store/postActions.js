@@ -3,15 +3,20 @@ import { loaderActions } from "./loaderSlice";
 import { postSliceActions } from "./postSlice";
 import { getToken } from '../utils/tokenVerify';
 import { toast } from "react-toastify";
+import { setAllUsersPosts } from "./profileActions";
 
 const likePost=(postId)=>{
-    return async(dispatch)=>{
+    return async(dispatch,getState)=>{
+        const {profile}=getState().profile;
         const token=getToken();
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await likePostPostService(postId,token);
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
+            if(profile._id){
+                dispatch(setAllUsersPosts(profile.username))
+            }
         }catch(error){
             toast.error(error.message);
         }finally{
@@ -21,13 +26,17 @@ const likePost=(postId)=>{
 }
 
 const dislikePost=(postId)=>{
-    return async(dispatch)=>{
+    return async(dispatch,getState)=>{
+        const {profile}=getState().profile;
         const token=getToken();
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await dislikePostPostService(postId,token);
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
+            if(profile._id){
+                dispatch(setAllUsersPosts(profile.username))
+            }
         }catch(error){
             toast.error(error.message);
         }finally{
@@ -37,30 +46,40 @@ const dislikePost=(postId)=>{
 }
 
 const editPost=(post)=>{
-    return async(dispatch)=>{
+    return async(dispatch,getState)=>{
+        const {profile}=getState().profile;
+        const {user}=getState().auth;
         const token=getToken();
         try{
             dispatch(loaderActions.setLoading({loading:true}));
             const {data:{posts}}=await editPostPostService(post,token);
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
+            if(profile._id===user._id){
+                dispatch(setAllUsersPosts(profile.username));
+            }
             toast.success('Post Edited Succesfully');
         }catch(error){
             toast.error('unable to Edit Post');
         }finally{
-            dispatch(loaderActions.setLoading({loading:false}))
+            dispatch(loaderActions.setLoading({loading:false}));
         }
     } 
 }
 
 const deletePost=(postId)=>{
-    return async(dispatch)=>{
+    return async(dispatch,getState)=>{
+        const {profile}=getState().profile;
+        const {user}=getState().auth;
         const token=getToken();
         try{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await deletePostPostService(postId,token);
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
+            if(profile._id===user._id){
+                dispatch(setAllUsersPosts(profile.username))
+            }
             toast.success('Post Deleted Succesfully')
         }catch(error){
             toast.error('unable to Delete Post');
@@ -79,7 +98,7 @@ const createNewPost=(post)=>{
             const {data:{posts}}=await addPostPostService(post,token);
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
-            toast.success('Post Added')
+            toast.success('Post Added');
         }catch(error){
             toast.error('unable to create Post')
         }finally{

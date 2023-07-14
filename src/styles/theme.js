@@ -30,7 +30,7 @@ const styles = {
     },
     ".card-icon":{
         borderRadius:"100%",
-        cursor:"pointer",
+        // cursor:"pointer",
         p:"2",
         ".icon":{
           display:"block"

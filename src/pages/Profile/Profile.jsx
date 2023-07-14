@@ -1,13 +1,18 @@
-import { Avatar, AvatarBadge, Box, Card, CardBody, CardFooter, CardHeader, HStack, Link, Text, useDisclosure } from "@chakra-ui/react"
+import { Avatar, AvatarBadge, Box, Button, Card, CardBody, CardFooter, CardHeader, HStack, Link, Text, useDisclosure } from "@chakra-ui/react"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router"
 // import { UserCard } from "../../common/UserCard";
-import { Calendar, Camera, Edit } from "../../utils/icons";
-import { useEffect } from "react";
+import { Calendar, Camera, Edit, FollowUser, UnFollowUser } from "../../utils/icons";
+import { useEffect, useState } from "react";
 import { setAllUsersPosts } from "../../store/profileActions";
-import { PostCard } from "../../common/PostCard";
+// import { PostCard } from "../../common/PostCard";
 import { EditProfile } from "./components/EditProfile";
 import { Overlay } from "../../common/Overlay";
+import { UnfollowUser, followUser } from "../../store/usersAction";
+import { Fragment } from "react";
+import { ProfilePostCard } from "./components/ProfilePostCard";
+import { profileSliceActions } from "../../store/profileSlice";
+
 // import { profileSliceActions } from "../../store/profileSlice";
 
 export const Profile = () => {
@@ -16,14 +21,25 @@ export const Profile = () => {
   const {profileId}=useParams();
   const {Allusers}=useSelector(state=>state.user);
   const {user}=useSelector(state=>state.auth);
+  // const {posts}=useSelector(state=>state.post);
   const getCurrentUser=Allusers.find(cUser=>cUser._id===profileId);
   const {profilePosts}=useSelector(state=>state.profile);
+  // const [isAuthenticatedUser,setIsAuthenticatedUser]=useState(false);
+  // const [isFollowing,setIsFollowing]=useState(false);
+
 
   useEffect(()=>{
-
+    dispatch(profileSliceActions.setProfile({profile:getCurrentUser}));
     dispatch(setAllUsersPosts(getCurrentUser.username));
-    // dispatch(profileSliceActions.setProfile(getCurrentUser));
-  },[getCurrentUser.username,getCurrentUser,dispatch]);
+  },[getCurrentUser.username,getCurrentUser._id,user._id,dispatch]);
+
+
+
+  const isAuthenticatedUser=getCurrentUser._id==user._id;
+  let isFollowing=false;
+  if(!isAuthenticatedUser){
+    isFollowing=getCurrentUser.followers.some(cUser=>cUser._id===user._id);
+  }
 
   return (
     <Box>
@@ -40,8 +56,18 @@ export const Profile = () => {
                 <Text>{getCurrentUser.firstName+" "+getCurrentUser.lastName}</Text>
                 <Text>{"@"+getCurrentUser.userHandler}</Text>
             </Box>
+            <Box>
+              {!isAuthenticatedUser &&
+              (<Fragment>
+                {!isFollowing ? (<Button leftIcon={<FollowUser color="red.400"/>} onClick={()=>dispatch(followUser(getCurrentUser))} >Follow</Button>)
+                :
+                (<Button leftIcon={<UnFollowUser color="red.400"/>} onClick={()=>dispatch(UnfollowUser(getCurrentUser))} >UnFollow</Button>)}
+              </Fragment>
+              )
+              }
+            </Box>
           </HStack>
-          {user._id===getCurrentUser._id && <Edit className="icon" onClick={onOpen} />}
+          {isAuthenticatedUser && <Edit className="icon" onClick={onOpen} />}
         </HStack>
         </CardHeader>
         <CardBody>
@@ -79,7 +105,7 @@ export const Profile = () => {
       {profilePosts.length>0 &&
         <Box>
           {profilePosts.map(post=>{
-            return <PostCard key={post._id} post={post}/>
+            return <ProfilePostCard key={post._id} post={post}/>
           })}
         </Box>
       }
