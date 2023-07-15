@@ -8,7 +8,7 @@ import { HomePosts } from "./components/HomePosts";
 export const HomePage = () => {
 
   return (
-    <Box >
+    <Box>
       <NewPost isOverlay={false}/>
       <Filter/>
       <HomePosts/>

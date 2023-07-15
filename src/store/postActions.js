@@ -78,7 +78,7 @@ const deletePost=(postId)=>{
             dispatch(postSliceActions.setAllPosts({posts}));
             dispatch(setAllUsersActivityPosts());
             if(profile._id===user._id){
-                dispatch(setAllUsersPosts(profile.username))
+                dispatch(setAllUsersPosts(profile.username));
             }
             toast.success('Post Deleted Succesfully')
         }catch(error){
@@ -131,12 +131,9 @@ const setAllUsersActivityPosts=()=>{
         const {following}=getState().user.Allusers.find(({username:currUsername})=>currUsername===username);
         const {sortBy}=getState().post;
 
-
         try{
             dispatch(loaderActions.setLoading({loading:true}));
-
             const {data:{posts:usersPosts}}=await getAllUsersPostsPostService(username);
-            
             const followersPosts=following.map(async(user)=>{
                 const posts= await getAllUsersPostsPostService(user.username);  
                 return posts
@@ -162,38 +159,46 @@ const setSortByAllUsersActivityPosts=(sortBy)=>{
     return (dispatch,getState)=>{
         const {usersActivityPosts}=getState().post;
         const usersPosts=[...usersActivityPosts];
-        if(sortBy==="latest"){
-            const latestusersActivityPosts=usersPosts.sort(({createdAt:postA},{createdAt:postB})=>{
-                if(new Date(postA)> new Date(postB)){
-                    return -1;
-                }
-                else if(new Date(postA)< new Date(postB)){
-                    return 1;
-                }
-                else{
-                    return 0;
-                }
-            });
-           
-            dispatch(postSliceActions.setUsersActivityPosts({posts:latestusersActivityPosts}));
+        try{
+            dispatch(loaderActions.setLoading({loading:true}));
+            if(sortBy==="latest"){
+                const latestusersActivityPosts=usersPosts.sort(({createdAt:postA},{createdAt:postB})=>{
+                    if(new Date(postA)> new Date(postB)){
+                        return -1;
+                    }
+                    else if(new Date(postA)< new Date(postB)){
+                        return 1;
+                    }
+                    else{
+                        return 0;
+                    }
+                });
+                dispatch(postSliceActions.setUsersActivityPosts({posts:latestusersActivityPosts}));
+            }
+            else if(sortBy==="trending"){
+                const trendingusersActivityPosts=usersPosts.sort((postA,postB)=>{
+                    const postACount=Number(postA.likes.likeCount)+Number(postA.comments.length);
+                    const postBCount=Number(postB.likes.likeCount)+Number(postB.comments.length);
+                    if(postACount > postBCount){
+                        return -1;
+                    }
+                    else if(postACount < postBCount){
+                        return 1;
+                    }
+                    else{
+                        return 0;
+                    }
+                }); 
+                dispatch(postSliceActions.setUsersActivityPosts({posts:trendingusersActivityPosts}));
+            }
+            dispatch(postSliceActions.setSortBy({sortBy}));
         }
-        else if(sortBy==="trending"){
-            const trendingusersActivityPosts=usersPosts.sort((postA,postB)=>{
-                const postACount=Number(postA.likes.likeCount)+Number(postA.comments.length);
-                const postBCount=Number(postB.likes.likeCount)+Number(postB.comments.length);
-                if(postACount > postBCount){
-                    return -1;
-                }
-                else if(postACount < postBCount){
-                    return 1;
-                }
-                else{
-                    return 0;
-                }
-            }); 
-            dispatch(postSliceActions.setUsersActivityPosts({posts:trendingusersActivityPosts}));
+        catch(error){
+            console.log(error)
         }
-        dispatch(postSliceActions.setSortBy({sortBy}));
+        finally{
+            dispatch(loaderActions.setLoading({loading:false}));
+        }
     }
 }
 
