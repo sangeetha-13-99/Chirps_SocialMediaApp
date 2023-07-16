@@ -113,6 +113,7 @@ const setAllPostsData=()=>{
             dispatch(loaderActions.setLoading({loading:true}))
             const {data:{posts}}=await getAllPostsPostService();  
             dispatch(postSliceActions.setAllPosts({posts}));
+            dispatch(setAllUsersActivityPosts());
         }
         catch(error){
             console.log(error)
@@ -129,20 +130,19 @@ const setAllUsersActivityPosts=()=>{
 
         const {username}=getState().auth.user;
         const {following}=getState().user.Allusers.find(({username:currUsername})=>currUsername===username);
-        const {sortBy}=getState().post;
+        const {sortBy,posts}=getState().post;
 
         try{
             dispatch(loaderActions.setLoading({loading:true}));
-            const {data:{posts:usersPosts}}=await getAllUsersPostsPostService(username);
-            const followersPosts=following.map(async(user)=>{
-                const posts= await getAllUsersPostsPostService(user.username);  
-                return posts
+            const getPosts=(uname)=>{
+                return posts.filter(post=>post.username===uname);
+            }
+            const usersPosts=getPosts(username);
+            const AllFollwersPosts=[];
+            following.forEach(user=>{
+                AllFollwersPosts.push(...getPosts(user.username));
             });
-            const AllFollwersPosts= await Promise.all(followersPosts);
-            let AllPosts=[...usersPosts];
-            AllFollwersPosts.map(({data:{posts}})=>{
-                AllPosts=[...AllPosts,...posts]
-            });
+            let AllPosts=[...usersPosts,...AllFollwersPosts];
             dispatch(postSliceActions.setUsersActivityPosts({posts:AllPosts}));
             dispatch(setSortByAllUsersActivityPosts(sortBy));
         }

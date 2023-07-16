@@ -8,7 +8,6 @@ export const NavigationCard = () => {
     const [path,setPath]=useState();
     const navigate=useNavigate();
     useEffect(()=>{
-        console.log(pathname.split('/')[1]);
         const getPath=pathname.split('/')[1]||"Home";
         setPath(getPath);
     },[pathname]);

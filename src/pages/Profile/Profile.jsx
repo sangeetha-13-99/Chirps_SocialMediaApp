@@ -21,11 +21,8 @@ export const Profile = () => {
   const {profileId}=useParams();
   const {Allusers}=useSelector(state=>state.user);
   const {user}=useSelector(state=>state.auth);
-  // const {posts}=useSelector(state=>state.post);
   const getCurrentUser=Allusers.find(cUser=>cUser._id===profileId);
   const {profilePosts}=useSelector(state=>state.profile);
-  // const [isAuthenticatedUser,setIsAuthenticatedUser]=useState(false);
-  // const [isFollowing,setIsFollowing]=useState(false);
 
 
   useEffect(()=>{

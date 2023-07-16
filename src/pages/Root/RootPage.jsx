@@ -8,14 +8,9 @@ import { SideBar } from "./components/SideBar";
 import { ScrollToTop } from "../../services/ScrollToTop";
 import {  useRef } from "react";
 import { NavigationCard } from "./components/NavigationCard";
-import { useSelector } from "react-redux";
 
 export const RootPage = () => {
   const mainContainer=useRef(null);
-  const {isLoading}=useSelector(state=>state.loader);
-
-
-
   return (
     <Box h="100vh">
         <Grid h="100%" templateAreas={{lg:`"header header header"
@@ -46,12 +41,6 @@ export const RootPage = () => {
           </GridItem>
         </Grid>
 			<ScrollToTop mainContainerRef={mainContainer}/>
-      {isLoading && <Box w="100%" h="100%" pos="fixed" bg='none' top="0" left="0"
-      backdropFilter='auto'
-      backdropBlur='2px' textAlign="center" >
-         <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="red.400" size="xl"/>
-      </Box>}
-      
     </Box>
   )
 }

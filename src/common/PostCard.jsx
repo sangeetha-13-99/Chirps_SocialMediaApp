@@ -25,10 +25,10 @@ export const PostCard = ({post}) => {
   let renderPostMedia=""
   if(post.mediaUrl){
     if(['png','svg','jpg','jpeg','gif','webp','avif'].includes(post.mediaUrl.split(".").pop().toLowerCase())){
-      renderPostMedia=<Image  objectFit="cover" maxW="100%" h="100%"  borderRadius="10px" src={post.mediaUrl} alt={post.content} />
+      renderPostMedia=<Image aspectRatio="16/9" w="100%" objectFit="cover" src={post.mediaUrl} alt={post.content} />
     }
     else if(['mp3','mp4','webm','ogg'].includes(post.mediaUrl.split(".").pop().toLowerCase())){
-      renderPostMedia=(<video controls style={{height:"100%",width:"100%",objectFit:"cover",borderRadius:"10px"}}>
+      renderPostMedia=(<video controls style={{aspectRatio:"16/9",width:"100%",objectFit:"cover"}}>
       <source src={post.mediaUrl} />
       </video>)
     }
@@ -103,7 +103,7 @@ export const PostCard = ({post}) => {
               <Box>
                 {post.content}
               </Box>
-              <Box pt="2" height={renderPostMedia && "300px"} w="100%">
+              <Box pt="2"  w="100%">
                 {renderPostMedia}
               </Box>
             </CardBody>
