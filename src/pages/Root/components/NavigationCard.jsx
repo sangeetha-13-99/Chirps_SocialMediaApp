@@ -15,10 +15,10 @@ export const NavigationCard = () => {
   return (
         <HStack p="4" zIndex="1" backdropBlur="2xl" bg={useColorModeValue('gray.100','gray.800')} top="0" pos="sticky" justifyContent={pathname.split('/')[1]?"space-between":"center"} boxShadow="sm" borderBottom="1px solid" borderBottomColor={useColorModeValue('gray.100','gray.700')}>
             {pathname.split('/')[1] && <HStack onClick={()=>navigate(-1)} cursor="pointer">
-            <LeftIcon className="icon"/>
-            <Text>Go Back</Text>
+            <LeftIcon className="icon" scale={1.5}/>
+            <Text fontFamily="heading" color="red.400" fontSize="1.5rem">Go Back</Text>
             </HStack>}
-            <Text fontWeight="bold" >{path}</Text>
+            <Text fontFamily="heading" color="red.400" fontSize="1.5rem">{path && path[0].toUpperCase()+path.slice(1)}</Text>
         </HStack>
   )
 }
